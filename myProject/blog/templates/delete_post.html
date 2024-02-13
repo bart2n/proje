@@ -1,0 +1,16 @@
+
+{%extends 'base.html' %}
+
+{% block content %}
+<h1>Update Post</h1>
+<h3>Delete:{{post.tite}}</h3>
+<form Method="Post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <strong>Are you sure?</strong>
+    <button class="btn btn-secondary">Delete Post</button>
+    
+</form>
+
+
+{% endblock %}
