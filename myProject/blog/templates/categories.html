@@ -1,15 +1,13 @@
 
 {%extends 'base.html' %}
 
-{% block content %}
 <h1>{{cats}}Category</h1>
-{% for post in categories%}
 
-{%extends 'base.html' %}
+
+
 {% block content %}
-<h1>Home</h1>
 <ul>
-{% for post in object_list %}
+{% for post in category_posts %}
     <li><a href="{%url 'article_detail' post.pk %}" >{{post.title}}</a> - {{post.author}}-{{post.post_date}}-{{post.category}}</br>
     {%if user.is_authenticated%} 
     

@@ -22,13 +22,14 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'add_post'%}">Create post</a>
                   </li>
-                  <li>
-                    <li>
+                
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{% url 'add_category'%}">Add Category</a>
+                    </li>
+                       <li>
                         <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
                         </li>
-                    <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="{% url 'add_category'%}">Add Category</a>
-                    </li>
+                    
                   {%else %}
                   <li>
                     <a class="nav-link active" aria-current="page" href="{% url 'register'%}">Register</a>
@@ -38,8 +39,6 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'login'%}">Login</a>
                     </li>
                    {%endif%}
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
               
               
             </ul>
