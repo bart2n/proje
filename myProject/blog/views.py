@@ -10,6 +10,13 @@ class HomeView(ListView):
     model = Post
     template_name = 'home.html'
     ordering = ["-post_date"]
+    
+    def get_context_data(self, **kwargs):
+        cat_menu =  Category.objects.all()
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context["cat_menu"] = cat_menu
+        return context
+
 def CategoryView(request, cats):
     # Get the category object based on the category name
     category = Category.objects.get(name=cats)
@@ -17,8 +24,8 @@ def CategoryView(request, cats):
     # Get all categories
     cats = Category.objects.all()
     
-    # Filter posts based on the category
-    category_posts = Post.objects.filter(category=cats)
+    # Filter posts based on the category object
+    category_posts = Post.objects.filter(category=category)
     
     return render(request, 'categories.html', {'cats': cats, 'category_posts': category_posts})
 
@@ -40,7 +47,7 @@ class AddCategoryView(CreateView):
 class UpdatePostView(UpdateView):  
     model = Post
     template_name="update_post.html"
-    fields=['title','title_tag','body']
+    fields=['title','title_tag','body','image']
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'

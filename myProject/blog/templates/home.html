@@ -1,18 +1,27 @@
+{% extends 'base.html' %}
 
-{%extends 'base.html' %}
-{% block title %}{{ post.title_tag }}{% endblock %}
+{% block title %}
+    {{ post.title_tag }}
+{% endblock %}
+
 {% block content %}
-<h1>Home</h1>
-<ul>
-{% for post in object_list %}
-    <li><a href="{%url 'article_detail' post.pk %}" >{{post.title}}</a> - {{post.author}}-{{post.post_date}}-{{post.category}}</br>
-    {%if user.is_authenticated%} 
-    
-     <a href="{% url 'update_view' post.pk %}">Edit</a>
-     <a href="{% url 'delete_post' post.pk %}">Delete</a>
-     {{post.body|safe}}</li>
-     {%endif%}
-
-{%endfor%}
-</ul>
+    <h1>Home</h1>
+    <ul>
+        {% for post in object_list %}
+            <li>
+                <a href="{% url 'article_detail' post.pk %}">{{ post.title }}</a> -
+                <span style="font-weight: bold; color: rgb(253, 10, 10);">Author:</span> {{ post.author }} -
+                <span style="font-weight: bold; color: rgb(254, 0, 0);">Date:</span> {{ post.post_date }} -
+                <span style="font-weight: bold; color: red;">Category:</span>
+                <a href="{% url 'category' post.category %}">{{ post.category }}</a> -
+                {% if user.is_authenticated %}
+                    <a href="{% url 'update_view' post.pk %}">Edit</a>
+                    <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                {% endif %}
+            </li>
+           
+                {{ post.body|safe }}
+           
+        {% endfor %}
+    </ul>
 {% endblock %}

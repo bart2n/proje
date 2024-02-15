@@ -6,8 +6,16 @@
     {{post.post_date}}</small><br/>
 <hr>
 <br/>
+<div>
+
+<img src="{{ post.image.url }}" alt="{{ post.title }}" style="width: 600px; height: auto;">
+
+
+
+
+</div>
 {{post.body|safe}}
-{{post.cover.url}}
+
 
 <br/><br/>
 <a href="{%url 'home' %}" class="btn btn-secondary">Back</a>

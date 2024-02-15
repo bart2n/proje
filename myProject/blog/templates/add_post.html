@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Home</h1>
 
-<form Method="Post">
+<form method="Post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p}}  
     
