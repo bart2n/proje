@@ -2,15 +2,28 @@
 {%extends 'base.html' %}
 
 {% block content %}
-<h1>Home</h1>
-
-<form method="Post" enctype="multipart/form-data">
+<h1>Create post</h1>
+   <div class="form-group"></div>
+   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p}}  
+    <input type="hidden" name="author" id="elder" value="bartu">
     
     <button class="btn btn-secondary">Post</button>
+    </div>
+
+
+    <script>
+        
+        console.log("Setting value for author");
+        var name = "{{ user.username }}";
+        document.getElementById("elder").value = name;
+        console.log("Value set:", name);
+    </script>
+ 
+      
     
-     </form>
+     
 </form>
 
 

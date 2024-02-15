@@ -15,9 +15,13 @@
 
 </div>
 {{post.body|safe}}
-
-
-<br/><br/>
+<br></br>
 <a href="{%url 'home' %}" class="btn btn-secondary">Back</a>
+<br/><br/>
+{% if user.is_authenticated %}
+  {% if user.id == post.author.id %}
 <a href="{%url 'delete_post' post.pk %}" class="btn btn-secondary">Delete</a>
+<a href="{%url 'update_view' post.pk %}" class="btn btn-secondary">Update</a>
+   {%endif%}
+{%endif%}
 {%endblock%}    

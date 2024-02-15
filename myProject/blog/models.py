@@ -21,7 +21,8 @@ class Post(models.Model):
     body = models.TextField(default = None)
     post_date = models.DateTimeField(auto_now_add=True)
     category =models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
-    image = models.ImageField(upload_to='post_images/', null=True, blank=True)
+    image = models.ImageField(upload_to='images/')
+    
     
     
     def __str__(self):

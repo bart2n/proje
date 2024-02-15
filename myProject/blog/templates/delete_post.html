@@ -7,8 +7,14 @@
 <form Method="Post">
     {% csrf_token %}
     {{ form.as_p}}
+    {% if user.is_authenticated%}
+       {% if user.id == post.author.id %}
     <strong>Are you sure?</strong>
     <button class="btn btn-secondary">Delete Post</button>
+        {% else %}
+        You are not allowed here.
+       {% endif %}
+    {% endif %}   
     
 </form>
 
